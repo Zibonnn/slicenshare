@@ -5,17 +5,17 @@ import { useState } from "react"
 const steps = [
   {
     title: "You've Got Skill, But No Support",
-    description: "Your talent is real — but access is missing.",
+    description: "Your talent is real — but access to opportunities is missing.",
     type: "devices",
   },
   {
     title: "Slice N Share Has Your Back",
-    description: "We connect you to support, sponsors & growth",
+    description: "We connect you to support, sponsors & growth opportunities.",
     type: "circle",
   },
   {
     title: "Rise to the Global Stage",
-    description: "From local player to global eSports icon.",
+    description: "From local player to global eSports icon and beyond.",
     type: "devices-advanced",
   },
 ]
@@ -30,12 +30,12 @@ export default function HowItWorks() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <h2 className="how-title">HOW IT WORKS</h2>
+          <h2 className="h4-alt" style={{ textAlign: 'center' }}>HOW IT WORKS</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -46,7 +46,7 @@ export default function HowItWorks() {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative mb-8 h-64 flex items-center justify-center ">
+              <div className="relative h-64 flex items-center justify-center ">
                 {/* Card Background */}
                 <motion.div
                   className="rounded-2xl flex items-center justify-center relative overflow-hidden"
@@ -57,7 +57,7 @@ export default function HowItWorks() {
                   {step.type === "devices" && (
                     <div className="relative">
                       <motion.div
-                        className="relative w-60 h-40 flex items-center justify-center"
+                        className="relative w-full h-64 flex items-center justify-center"
                         animate={{
                           scale: hoveredIndex === index ? 1.05 : 1,
                         }}
@@ -83,19 +83,11 @@ export default function HowItWorks() {
                   {step.type === "circle" && (
                     <div className="relative flex items-center justify-center">
                       <motion.div
-                        className="relative w-60 h-40 flex items-center justify-center"
+                        className="relative w-full h-64 flex items-center justify-center"
                         animate={{
                           scale: hoveredIndex === index ? 1.05 : 1,
-                          rotate: hoveredIndex === index ? 360 : 0,
                         }}
-                        transition={{
-                          scale: { duration: 0.3 },
-                          rotate: {
-                            duration: 4,
-                            repeat: hoveredIndex === index ? Number.POSITIVE_INFINITY : 0,
-                            ease: "linear",
-                          },
-                        }}
+                        transition={{ duration: 0.3 }}
                       >
                         <img
                           src="/How_It_Works_SNS/2.webp"
@@ -117,7 +109,7 @@ export default function HowItWorks() {
                   {step.type === "devices-advanced" && (
                     <div className="relative">
                       <motion.div
-                        className="relative w-60 h-40 flex items-center justify-center"
+                        className="relative w-full h-64 flex items-center justify-center"
                         animate={{
                           scale: hoveredIndex === index ? 1.05 : 1,
                         }}
@@ -141,26 +133,25 @@ export default function HowItWorks() {
                 </motion.div>
               </div>
 
-              <motion.h3
-                className="how-h3"
-                animate={{
-                  background: hoveredIndex === index ? "linear-gradient(45deg, #A855F7, #EC4899)" : "transparent",
-                  WebkitBackgroundClip: hoveredIndex === index ? "text" : "unset",
-                  WebkitTextFillColor: hoveredIndex === index ? "transparent" : "#FFFFFF",
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                {step.title}
-              </motion.h3>
-              <motion.p
-                className="how-desc"
-                animate={{
-                  color: hoveredIndex === index ? "#C084FC" : "#9CA3AF",
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                {step.description}
-              </motion.p>
+              <div style={{ margin: '16px', display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', textAlign: 'center', marginTop: '16px' }}>
+                <h3
+                  className="h5"
+                  style={{ textAlign: 'center', color: '#FFFFFF' }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  className="body-s"
+                  style={{ 
+                    color: 'rgba(255, 255, 255, 0.56)', 
+                    textAlign: 'center',
+                    textWrap: 'balance',
+                    maxWidth: '280px'
+                  }}
+                >
+                  {step.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

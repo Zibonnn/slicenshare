@@ -54,12 +54,9 @@ export default function UpcomingEvents() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-wider"
-            style={{ fontFamily: "Bebas Neue, sans-serif" }}
-          >
+          <h2 className="h4-alt mb-4" style={{ textAlign: 'center' }}>
             UPCOMING EVENTS
           </h2>
         </motion.div>

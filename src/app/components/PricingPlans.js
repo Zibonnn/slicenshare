@@ -105,20 +105,21 @@ export default function PricingPlans() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8"
         >
           <p
-            className="pricing-p text-sm sm:text-base mb-4"
+            className="callout mb-2"
             style={{
               backgroundImage: `linear-gradient(300deg, var(--token-dc9856fd-0400-432f-8bac-dca82295da25, rgb(255, 0, 64)) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--token-8a3f945e-7097-47e8-ae48-c03cf8e5cf8b, rgb(129, 23, 241)) 100%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
+              textAlign: 'center',
             }}
           >
             No gatekeeping. Your skills, our platform.
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="h4-alt mb-4" style={{ textAlign: 'center' }}>
             WE HAVE GOT YOUR BACK — PICK YOUR PLAN
           </h2>
         </motion.div>

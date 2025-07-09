@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-/* Import General Sans font */
-@import url("https://api.fontshare.com/v2/css?f[]=bebas-neue@400&display=swap");
+/* Import fonts from Fontshare */
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=bebas-neue@400&display=swap");
 
 :root {
   --background: #000000;
@@ -254,7 +254,7 @@ h1, h2, h3, h4, h5 {
 
 .how-card {
   box-sizing: border-box;
-  width: 326px;
+  width: 100%;
   height: min-content;
   display: flex;
   flex-direction: column;
@@ -551,7 +551,7 @@ h1, h2, h3, h4, h5 {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.02em;
-  color: #666;
+  color: rgba(255, 255, 255, 0.56);
   text-align: left;
 }
 @media (max-width: 1199px) {
@@ -688,7 +688,7 @@ h1, h2, h3, h4, h5 {
   text-align: center;
 }
 .rising-carousel-subtitle {
-  margin-top: 1.5rem;
+  margin-top: 4px;
   text-align: center;
 }
 .rising-carousel-nav-btn {
@@ -865,15 +865,13 @@ h1, h2, h3, h4, h5 {
 .rising-star-social-icon {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  transition: background 0.2s;
+  transition: transform 0.2s ease;
 }
 .rising-star-social-icon:hover {
-  background: #f3f3f3;
+  transform: scale(1.1);
 }
 .rising-star-social-svg {
   width: 20px;
@@ -888,6 +886,18 @@ h1, h2, h3, h4, h5 {
 .rising-star-social-icon.fallback.youtube { background: #ff0000; }
 .rising-star-social-svg.fallback.youtube { color: #fff; }
 .rising-star-social-svg.fallback.facebook { color: #1877f3; }
+
+/* Image-based social icons */
+.rising-star-social-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.rising-star-social-img:hover {
+  transform: scale(1.1);
+}
 .rising-star-game-info {
   padding: 0 24px 24px 24px;
   display: flex;

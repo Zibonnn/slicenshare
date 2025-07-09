@@ -187,11 +187,8 @@ export default function RisingStarsCarousel() {
 
   useEffect(() => {
     const fetchStreamers = async () => {
-      // Only try to fetch in production or if explicitly testing
-      const shouldFetchAPI =
-        process.env.NODE_ENV === "production" ||
-        window.location.hostname === "slicenshare.com" ||
-        window.location.hostname.includes("vercel.app")
+      // Always try to fetch from API, fallback to local data if it fails
+      const shouldFetchAPI = true
 
       if (!shouldFetchAPI) {
         console.log("🔧 Development mode: Using enhanced fallback data with real streamer info")
@@ -403,51 +400,78 @@ export default function RisingStarsCarousel() {
               >
                 {infiniteCards.map((player, index) => (
                   <motion.div
-                     key={`${player.displayName}-${index}`}
-                    className="rising-star-card"
+                    key={`${player.displayName}-${index}`}
+                    className="framer-1jtzne7"
                     whileHover={{ scale: 1.02 }}
+                    style={{
+                      background:
+                        "linear-gradient(180deg, var(--token-71433ee0-fb28-45f3-9aa2-484c17fef004, rgb(0, 0, 0)) 0%, rgb(23, 23, 23) 100%)",
+                      borderRadius: 12,
+                      width: 256,
+                      minHeight: 'min-content',
+                      overflow: 'hidden',
+                      padding: 0,
+                      position: 'relative',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      alignContent: 'center',
+                      flexWrap: 'nowrap',
+                      gap: 0,
+                      justifyContent: 'flex-start',
+                    }}
                   >
-                    {/* Card Container */}
-                    <div className="rising-star-card-inner">
-                      {/* Top Section - Background Game Image (50% height) */}
-                      <div className="rising-star-card-top" style={{ height: 'auto' }}>
-                        <img
-                          src={player.gameImage || getGameBackground(player.primaryGameTitles)}
-                          alt={`${player.displayName} background`}
-                         className="rising-star-card-bg"
-                          crossOrigin="anonymous"
-                          onError={(e) => {
-                            e.target.src =
-                              "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                    {/* Top Section - Background Game Image */}
+                    <div className="framer-1rzyc1f" style={{ width: '100%', position: 'relative', padding: 24, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, overflow: 'hidden' }}>
+                      <img
+                        src={player.gameImage || getGameBackground(player.primaryGameTitles)}
+                        alt={`${player.displayName} background`}
+                        className="rising-star-card-bg"
+                        crossOrigin="anonymous"
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }}
+                        onError={e => {
+                          e.target.src =
+                            "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                        }}
+                      />
+                      <div className="framer-6495gp" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%)', position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: 2 }} />
+                      {/* Player Avatar - Centered */}
+                      <div style={{ position: 'relative', zIndex: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                        <div
+                          className="framer-1jtj5fw"
+                          style={{
+                            width: 128,
+                            height: 128,
+                            aspectRatio: '1/1',
+                            borderRadius: 64,
+                            overflow: 'hidden',
+                            background: '#fff',
+                            boxShadow: '0 4px 24px 0 rgba(0,0,0,0.3)',
+                            borderBottom: '4px solid var(--sns-purple, #8117f1)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
                           }}
-                        />
-                        <div className="rising-star-card-bg-gradient"></div>
-
-                        {/* Player Avatar - Centered in the background section */}
-                        <div className="rising-star-avatar-container">
-                          <div
-                            className={`rising-star-avatar ${player.borderColor || "border-white"}`}
-                          >
-                            <img
-                              src={player.avatar || getAvatarForStreamer(player.displayName)}
-                              alt={player.displayName}
-                              className="rising-star-avatar-img"
-                              onError={(e) => {
-                                e.target.src = "/Streamers/Torpedo.jpg"
-                              }}
-                            />
-                          </div>
+                        >
+                          <img
+                            src={player.avatar || getAvatarForStreamer(player.displayName)}
+                            alt={player.displayName}
+                            className="rising-star-avatar-img"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 64 }}
+                            onError={e => {
+                              e.target.src = "/Streamers/Torpedo.jpg"
+                            }}
+                          />
                         </div>
                       </div>
-
-                      {/* Bottom Section - Solid Dark Background (50% height) */}
-                      <div className="rising-star-card-bottom" style={{ height: 'auto' }}>
-                        <div className="rising-star-name" style={{ padding: '16px' }}>
-                          <h3 className="player-name-gradient h4-alt">
-                            {player.displayName}
-                          </h3>
-                        </div>
-                        <div className="rising-star-social" style={{ width: '100%', height: 'min-content', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '8px 0', background: 'linear-gradient(270deg, rgba(0,0,0,0) 0%, #000 50%, rgba(0,0,0,0) 100%)' }}>
+                    </div>
+                    {/* Info Area */}
+                    <div className="framer-11tzp1t" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, gap: 0 }}>
+                      <div className="framer-gp47k7" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, padding: '24px 0 0 0' }}>
+                        <h3 className="player-name-gradient h4-alt" style={{ textAlign: 'center', margin: 0 }}>
+                          {player.displayName}
+                        </h3>
+                        <div className="framer-1pls46z" style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 16, padding: '8px 0', background: 'linear-gradient(270deg, rgba(0,0,0,0) 0%, rgb(0,0,0) 50%, rgba(0,0,0,0) 100%)' }}>
                           {player.socials?.slice(0, 3).map((social, socialIndex) => (
                             <motion.a
                               key={socialIndex}
@@ -459,54 +483,66 @@ export default function RisingStarsCarousel() {
                               whileTap={{ scale: 0.9 }}
                             >
                               {social.platform === "YouTube" && (
-                                <svg className="rising-star-social-svg youtube" fill="currentColor" viewBox="0 0 24 24">
-                                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                                 </svg>
+                                <img 
+                                  src="/icons/yt.png" 
+                                  srcSet="/icons/yt.png 1x, /icons/yt@2x.png 2x"
+                                  alt="YouTube"
+                                  className="rising-star-social-img"
+                                  style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+                                />
                               )}
                               {social.platform === "Facebook" && (
-                                <svg className="rising-star-social-svg facebook" fill="currentColor" viewBox="0 0 24 24">
-                                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                                 </svg>
+                                <img 
+                                  src="/icons/fb.png" 
+                                  srcSet="/icons/fb.png 1x, /icons/fb@2x.png 2x"
+                                  alt="Facebook"
+                                  className="rising-star-social-img"
+                                  style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+                                />
                               )}
                               {social.platform === "Twitch" && (
                                 <svg className="rising-star-social-svg twitch" fill="currentColor" viewBox="0 0 24 24">
-                                   <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
-                                 </svg>
+                                  <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
+                                </svg>
                               )}
                               {!["YouTube", "Facebook", "Twitch"].includes(social.platform) && (
                                 <svg className="rising-star-social-svg other" fill="currentColor" viewBox="0 0 24 24">
-                                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                 </svg>
+                                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
                               )}
                             </motion.a>
                           ))}
                         </div>
-                        <div className="rising-star-game-info">
-                          <div className="rising-star-info-group" style={{ boxSizing: 'border-box', width: '100%', height: 'min-content', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', padding: '24px', overflow: 'hidden', alignContent: 'flex-start', flexWrap: 'nowrap', gap: '16px', borderRadius: 0 }}>
-                            {/* Info cell 1: Plays */}
-                            <div className="rising-star-info-cell" style={{ width: '256px', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '12px', position: 'relative', padding: 0 }}>
-                              <div className="rising-star-info-icon" style={{ display: 'flex', alignItems: 'center', padding: '1px 0 0 0' }}>
-                                <svg className="rising-star-game-icon" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                                </svg>
-                              </div>
-                              <div className="rising-star-info-text" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                <span className="caption-1" style={{ color: 'rgba(255,255,255,0.56)' }}>Plays</span>
-                                <span className="body-s" style={{ color: '#fff' }}>{player.primaryGameTitles?.filter((game) => game !== "N/A").join(", ") || "Various Games"}</span>
-                              </div>
-                            </div>
-                            {/* Info cell 2: Status */}
-                            <div className="rising-star-info-cell" style={{ width: '256px', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '12px', position: 'relative', padding: 0 }}>
-                              <div className="rising-star-info-icon" style={{ display: 'flex', alignItems: 'center', padding: '1px 0 0 0' }}>
-                                <svg className="rising-star-status-icon" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                </svg>
-                              </div>
-                              <div className="rising-star-info-text" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                <span className="caption-1" style={{ color: 'rgba(255,255,255,0.56)' }}>Status</span>
-                                <span className="body-s" style={{ color: '#fff' }}>{player.isSponsored ? "SPONSORED PLAYER" : "RISING STAR"}</span>
-                              </div>
-                            </div>
+                      </div>
+                      <div className="framer-15yvq5m" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 16, padding: 24 }}>
+                        {/* Info cell 1: Plays */}
+                        <div style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', padding: '1px 0 0 0' }}>
+                            <img 
+                              src="/icons/controller.png" 
+                              alt="Controller"
+                              className="rising-star-game-icon"
+                              style={{ width: '16px', height: '16px', objectFit: 'contain' }}
+                            />
+                          </div>
+                          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                            <span className="caption-1">Plays</span>
+                            <span className="body-s">{player.primaryGameTitles?.filter((game) => game !== "N/A").join(", ") || "Various Games"}</span>
+                          </div>
+                        </div>
+                        {/* Info cell 2: Status */}
+                        <div style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', padding: '1px 0 0 0' }}>
+                            <img 
+                              src="/icons/Medal.png" 
+                              alt="Medal"
+                              className="rising-star-status-icon"
+                              style={{ width: '16px', height: '16px', objectFit: 'contain' }}
+                            />
+                          </div>
+                          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                            <span className="caption-1">Status</span>
+                            <span className="body-s">{player.isSponsored || player.status === "sponsored" ? "SPONSORED PLAYER" : "RISING STAR"}</span>
                           </div>
                         </div>
                       </div>
