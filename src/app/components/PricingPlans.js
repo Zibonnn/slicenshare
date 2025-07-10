@@ -107,19 +107,10 @@ export default function PricingPlans() {
           transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
-          <p
-            className="callout mb-2"
-            style={{
-              backgroundImage: `linear-gradient(300deg, var(--token-dc9856fd-0400-432f-8bac-dca82295da25, rgb(255, 0, 64)) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--token-8a3f945e-7097-47e8-ae48-c03cf8e5cf8b, rgb(129, 23, 241)) 100%)`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              textAlign: 'center',
-            }}
-          >
+          <p className="callout mb-2 gradient-text-primary">
             No gatekeeping. Your skills, our platform.
           </p>
-          <h2 className="h4-alt mb-4" style={{ textAlign: 'center' }}>
+          <h2 className="h4-alt mb-4 text-center-inline">
             WE HAVE GOT YOUR BACK — PICK YOUR PLAN
           </h2>
         </motion.div>
@@ -139,14 +130,9 @@ export default function PricingPlans() {
               {/* Standard Card with Special Gradient Border Around Entire Card */}
               {plan.type === "standard" ? (
                 <motion.div
-                  className="flex flex-col p-0.5 rounded-2xl overflow-hidden"
-                  style={{
-                    background:
-                      hoveredIndex === index
-                        ? "linear-gradient(90deg, #8117f1 0%, rgb(255, 0, 64) 43.46%, rgb(27, 20, 100) 75.92%, rgb(129, 23, 241) 100%)"
-                        : "linear-gradient(247deg, #8117f1 0%, rgb(255, 0, 64) 43.46%, rgb(27, 20, 100) 75.92%, rgb(129, 23, 241) 100%)",
-                    transition: "background 0.3s ease",
-                  }}
+                  className={`flex flex-col p-0.5 rounded-2xl overflow-hidden ${
+                    hoveredIndex === index ? 'pricing-card-gradient-hover' : 'pricing-card-gradient-default'
+                  }`}
                   whileHover={{ scale: 1.02 }}
                 >
                   <div className="w-full bg-black rounded-2xl overflow-hidden">
@@ -173,13 +159,8 @@ export default function PricingPlans() {
                         {/* Plan Name */}
                         <div className="text-center mb-4">
                           <h3
-                            className="font-bold text-xl sm:text-2xl mb-4 sm:mb-6"
+                            className="font-bold text-xl sm:text-2xl mb-4 sm:mb-6 gradient-text-primary-no-center"
                             style={{
-                              backgroundImage:
-                                "linear-gradient(300deg, var(--token-dc9856fd-0400-432f-8bac-dca82295da25, rgb(255, 0, 64)) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--token-8a3f945e-7097-47e8-ae48-c03cf8e5cf8b, rgb(129, 23, 241)) 100%)",
-                              WebkitBackgroundClip: "text",
-                              WebkitTextFillColor: "transparent",
-                              backgroundClip: "text",
                               lineHeight: "1.2",
                               whiteSpace: "pre",
                             }}
@@ -274,19 +255,8 @@ export default function PricingPlans() {
                       {/* Plan Name */}
                       <div className="text-center mb-4">
                         <h3
-                          className="font-semibold text-xl sm:text-2xl mb-4 sm:mb-6"
+                          className="font-semibold text-xl sm:text-2xl mb-4 sm:mb-6 gradient-text-primary-no-center"
                           style={{
-                            backgroundImage: `linear-gradient(300deg, 
-                                rgb(255, 0, 64) 0%, 
-                                rgb(255, 145, 173) 19.913701602042644%, 
-                                rgb(182, 214, 241) 36.19087837837838%, 
-                                rgb(254, 221, 194) 52.43997912726201%, 
-                                rgb(255, 195, 161) 65.35754504504504%, 
-                                rgb(252, 161, 43) 82.60908111867774%, 
-                                rgb(129, 23, 241) 100%)`,
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
                             lineHeight: "1.2",
                             whiteSpace: "pre",
                           }}

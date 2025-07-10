@@ -10,11 +10,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link
-          href="https://api.fontshare.com/v2/css?f[]=bebas-neue@400&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=bebas-neue@400&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-black text-white overflow-x-hidden" style={{ fontFamily: "General Sans, sans-serif" }}>
+      <body className="bg-black text-white overflow-x-hidden font-general-sans">
         {children}
       </body>
     </html>

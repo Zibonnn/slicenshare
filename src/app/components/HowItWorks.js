@@ -1,158 +1,120 @@
 "use client"
-import { motion } from "framer-motion"
-import { useState } from "react"
 
-const steps = [
+import { motion } from "framer-motion"
+import { useState, useMemo } from "react"
+
+// Constants
+const STEPS = [
   {
+    id: 1,
     title: "You've Got Skill, But No Support",
     description: "Your talent is real — but access to opportunities is missing.",
     type: "devices",
+    image: "/How_It_Works_SNS/1.webp",
   },
   {
+    id: 2,
     title: "Slice N Share Has Your Back",
     description: "We connect you to support, sponsors & growth opportunities.",
     type: "circle",
+    image: "/How_It_Works_SNS/2.webp",
   },
   {
+    id: 3,
     title: "Rise to the Global Stage",
     description: "From local player to global eSports icon and beyond.",
     type: "devices-advanced",
+    image: "/How_It_Works_SNS/3.webp",
   },
 ]
 
+// Components
+const StepCard = ({ step, index, isHovered, onHover, onLeave }) => {
+  const cardVariants = {
+    initial: { opacity: 0, y: 50 },
+    animate: { opacity: 1, y: 0 },
+    hover: { scale: 1.02 }
+  }
+
+  const imageVariants = {
+    initial: { scale: 1 },
+    hover: { scale: 1.05 }
+  }
+
+  const getImageFilter = () => {
+    return isHovered 
+      ? "grayscale(0%) brightness(1.2) saturate(1.3) drop-shadow(0 0 20px rgba(139, 92, 246, 0.4))"
+      : "grayscale(100%) brightness(0.7) saturate(0.5)"
+  }
+
+  return (
+    <motion.div
+      key={step.id}
+      variants={cardVariants}
+      initial="initial"
+      whileInView="animate"
+      whileHover="hover"
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      className="how-card"
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
+      <div className="how-card-image-container">
+        <motion.div
+          className="how-card-image-wrapper"
+          variants={imageVariants}
+          transition={{ duration: 0.3 }}
+        >
+          <img
+            src={step.image}
+            alt={`${step.title} illustration`}
+            className="how-card-image"
+            style={{ filter: getImageFilter() }}
+          />
+        </motion.div>
+      </div>
+
+      <div className="how-card-content">
+        <h3 className="how-card-title">
+          {step.title}
+        </h3>
+        <p className="how-card-description">
+          {step.description}
+        </p>
+      </div>
+    </motion.div>
+  )
+}
+
+// Main Component
 export default function HowItWorks() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
+  const handleHover = useMemo(() => (index) => setHoveredIndex(index), [])
+  const handleLeave = useMemo(() => () => setHoveredIndex(null), [])
+
   return (
-    <section id="how-it-works" className="py-40 bg-[#0D0D0D]">
-      <div className="container mx-auto px-4">
+    <section id="how-it-works" className="how-it-works-section">
+      <div className="how-it-works-container">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="how-it-works-header"
         >
-          <h2 className="h4-alt" style={{ textAlign: 'center' }}>HOW IT WORKS</h2>
+          <h2 className="h4-alt">HOW IT WORKS</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="how-card"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className="relative h-64 flex items-center justify-center ">
-                {/* Card Background */}
-                <motion.div
-                  className="rounded-2xl flex items-center justify-center relative overflow-hidden"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* First Card - Original Devices Design */}
-                  {step.type === "devices" && (
-                    <div className="relative">
-                      <motion.div
-                        className="relative w-full h-64 flex items-center justify-center"
-                        animate={{
-                          scale: hoveredIndex === index ? 1.05 : 1,
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <img
-                          src="/How_It_Works_SNS/1.webp"
-                          alt="Devices illustration"
-                          className="w-full h-full object-contain"
-                          style={{
-                            filter:
-                              hoveredIndex === index
-                                ? "grayscale(0%) brightness(1.2) saturate(1.3) drop-shadow(0 0 20px rgba(139, 92, 246, 0.4))"
-                                : "grayscale(100%) brightness(0.7) saturate(0.5)",
-                            transition: "filter 0.3s ease",
-                          }}
-                        />
-                      </motion.div>
-                    </div>
-                  )}
-
-                  {/* Second Card - Circular Progress Design */}
-                  {step.type === "circle" && (
-                    <div className="relative flex items-center justify-center">
-                      <motion.div
-                        className="relative w-full h-64 flex items-center justify-center"
-                        animate={{
-                          scale: hoveredIndex === index ? 1.05 : 1,
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <img
-                          src="/How_It_Works_SNS/2.webp"
-                          alt="Circular progress illustration"
-                          className="w-full h-full object-contain"
-                          style={{
-                            filter:
-                              hoveredIndex === index
-                                ? "grayscale(0%) brightness(1.2) saturate(1.3) drop-shadow(0 0 20px rgba(139, 92, 246, 0.4))"
-                                : "grayscale(100%) brightness(0.7) saturate(0.5)",
-                            transition: "filter 0.3s ease",
-                          }}
-                        />
-                      </motion.div>
-                    </div>
-                  )}
-
-                  {/* Third Card - Advanced Devices with Badge */}
-                  {step.type === "devices-advanced" && (
-                    <div className="relative">
-                      <motion.div
-                        className="relative w-full h-64 flex items-center justify-center"
-                        animate={{
-                          scale: hoveredIndex === index ? 1.05 : 1,
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <img
-                          src="/How_It_Works_SNS/3.webp"
-                          alt="Advanced devices illustration"
-                          className="w-full h-full object-contain"
-                          style={{
-                            filter:
-                              hoveredIndex === index
-                                ? "grayscale(0%) brightness(1.2) saturate(1.3) drop-shadow(0 0 20px rgba(139, 92, 246, 0.4))"
-                                : "grayscale(100%) brightness(0.7) saturate(0.5)",
-                            transition: "filter 0.3s ease",
-                          }}
-                        />
-                      </motion.div>
-                    </div>
-                  )}
-                </motion.div>
-              </div>
-
-              <div style={{ margin: '16px', display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', textAlign: 'center', marginTop: '16px' }}>
-                <h3
-                  className="h5"
-                  style={{ textAlign: 'center', color: '#FFFFFF' }}
-              >
-                {step.title}
-                </h3>
-                <p
-                  className="body-s"
-                  style={{ 
-                    color: 'rgba(255, 255, 255, 0.56)', 
-                    textAlign: 'center',
-                    textWrap: 'balance',
-                    maxWidth: '280px'
-                  }}
-              >
-                {step.description}
-                </p>
-              </div>
-            </motion.div>
+        <div className="how-it-works-grid">
+          {STEPS.map((step, index) => (
+            <StepCard
+              key={step.id}
+              step={step}
+              index={index}
+              isHovered={hoveredIndex === index}
+              onHover={() => handleHover(index)}
+              onLeave={handleLeave}
+            />
           ))}
         </div>
       </div>

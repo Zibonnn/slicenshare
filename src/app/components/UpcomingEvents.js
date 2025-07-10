@@ -56,7 +56,7 @@ export default function UpcomingEvents() {
           transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
-          <h2 className="h4-alt mb-4" style={{ textAlign: 'center' }}>
+          <h2 className="h4-alt mb-4 text-center-inline">
             UPCOMING EVENTS
           </h2>
         </motion.div>
@@ -85,14 +85,7 @@ export default function UpcomingEvents() {
               <div className="p-6 space-y-4">
                 {/* Event Title with Gradient */}
                 <h3
-                  className="text-xl font-bold mb-3"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(300deg, var(--token-dc9856fd-0400-432f-8bac-dca82295da25, rgb(255, 0, 64)) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--token-8a3f945e-7097-47e8-ae48-c03cf8e5cf8b, rgb(129, 23, 241)) 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
+                  className="text-xl font-bold mb-3 gradient-text-primary-no-center"
                 >
                   {event.title}
                 </h3>
