@@ -137,8 +137,8 @@ export default function HowItWorks() {
                 <h3
                   className="h5"
                   style={{ textAlign: 'center', color: '#FFFFFF' }}
-                >
-                  {step.title}
+              >
+                {step.title}
                 </h3>
                 <p
                   className="body-s"
@@ -148,8 +148,8 @@ export default function HowItWorks() {
                     textWrap: 'balance',
                     maxWidth: '280px'
                   }}
-                >
-                  {step.description}
+              >
+                {step.description}
                 </p>
               </div>
             </motion.div>
