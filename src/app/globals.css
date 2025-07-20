@@ -19,8 +19,11 @@
   --green: rgb(0, 184, 55);
   --form-bg: rgb(23, 23, 23);
   --sns-purple-light: rgb(170, 51, 255);
+  --sns-purple-dark: rgb(80, 15, 150);
   --white-56: rgba(255, 255, 255, 0.56);
   --light-bg: rgb(20, 21, 22);
+  --card-bg: rgb(13, 13, 13);
+  --secondary-cta: rgb(23, 23, 23);
 }
 
 /* Tailwind theme configuration */
@@ -102,13 +105,28 @@ body {
   border: none;
   color: var(--white);
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--sns-purple-light) 0%, var(--sns-purple) 100%);
+  background: var(--sns-purple-dark);
+  color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(129, 23, 241, 0.3);
+}
+
+.btn-secondary {
+  background: var(--secondary-cta);
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-cta);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive design helpers */
@@ -135,6 +153,36 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes snakeTravel {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
 
@@ -916,7 +964,7 @@ h1, h2, h3, h4, h5 {
 
 /* Gradient Text Styles */
 .gradient-text-primary {
-  background-image: linear-gradient(300deg, var(--sns-red) 0%, var(--sns-pink) 19.91%, var(--sns-blue) 36.19%, var(--sns-peach) 52.44%, var(--sns-yellow) 65.36%, var(--sns-orange) 82.61%, var(--sns-purple) 100%);
+  background-image: linear-gradient(300deg, var(--sns-red) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--sns-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -924,10 +972,11 @@ h1, h2, h3, h4, h5 {
 }
 
 .gradient-text-primary-no-center {
-  background-image: linear-gradient(300deg, var(--sns-red) 0%, var(--sns-pink) 19.91%, var(--sns-blue) 36.19%, var(--sns-peach) 52.44%, var(--sns-yellow) 65.36%, var(--sns-orange) 82.61%, var(--sns-purple) 100%);
+  background-image: linear-gradient(300deg, var(--sns-red) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--sns-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: center;
 }
 
 /* Pricing Card Gradient Borders */
@@ -990,7 +1039,7 @@ h1, h2, h3, h4, h5 {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   color: var(--white);
-  text-align: left;
+  text-align: center;
   letter-spacing: -0.01em;
   text-transform: capitalize;
   font-size: 32px;
@@ -999,7 +1048,7 @@ h1, h2, h3, h4, h5 {
 .h2 {
   font-family: "General Sans", sans-serif;
   color: var(--white);
-  text-align: left;
+  text-align: center;
   font-weight: 500;
   font-size: 28px;
   line-height: 140%;
@@ -1061,11 +1110,11 @@ h1, h2, h3, h4, h5 {
 }
 .caption-1 {
   font-family: "General Sans", sans-serif;
-  color: var(--white-56);
+  color: var(--white-64);
   text-align: left;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 160%;
   letter-spacing: 0.02em;
 }
 .caption-2 {
@@ -1089,11 +1138,17 @@ h1, h2, h3, h4, h5 {
 .callout {
   font-family: "General Sans", sans-serif;
   color: var(--sns-grey);
-  text-align: left;
+  text-align: center;
+  margin-bottom: 8px;
   font-weight: 500;
   font-size: 16px;
   line-height: 160%;
   letter-spacing: 0.02em;
+}
+
+/* Override color when callout is used with gradient */
+.callout.gradient-text-primary {
+  color: transparent;
 }
 .footnote {
   font-family: "General Sans", sans-serif;

@@ -56,7 +56,7 @@ export default function UpcomingEvents() {
           transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
-          <h2 className="h4-alt mb-4 text-center-inline">
+          <h2 className="h4-alt mb-4">
             UPCOMING EVENTS
           </h2>
         </motion.div>
