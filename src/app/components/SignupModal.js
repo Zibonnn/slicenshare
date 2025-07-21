@@ -402,7 +402,7 @@ export default function SignupModal({ isOpen, onClose, selectedPlan }) {
                               <Zap size={16} className="signup-modal-cta-icon" />
                               <h4 className="caption-1" style={{ fontWeight: 500, color: '#fff' }}>Ready to Start Your Journey?</h4>
                             </div>
-                            <p className="caption-1 text-white-56">Join 500+ streamers who've already transformed their gaming career with Slice N Share!</p>
+                            <p className="caption-1 text-white-56">Join 500+ streamers who&#39;ve already transformed their gaming career with Slice N Share!</p>
                           </div>
                         </motion.div>
                       )}

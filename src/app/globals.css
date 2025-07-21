@@ -1578,7 +1578,8 @@ h1, h2, h3, h4, h5 {
   background: #171717;
   color: #fff;
 }
-/*.signup-modal-nav-btn-next, .signup-modal-nav-btn-submit {
+/*
+.signup-modal-nav-btn-next, .signup-modal-nav-btn-submit {
   background: linear-gradient(90deg, #8117f1 0%, #a78bfa 100%);
   color: #fff;
 }
@@ -1590,6 +1591,7 @@ h1, h2, h3, h4, h5 {
   background: linear-gradient(90deg, #6d1bbd 0%, #a78bfa 100%);
 }
 */
+
 .signup-modal-loading {
   display: flex;
   align-items: center;
