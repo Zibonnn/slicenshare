@@ -88,7 +88,7 @@ export default function UpcomingEvents() {
                   <h3 className="h4 gradient-text-primary-no-center" style={{ marginBottom: 12 }}>{event.title}</h3>
 
                   {/* Event Description */}
-                  <p className="body" style={{ marginBottom: 24 }}>{event.description}</p>
+                  <p className="body-s" style={{ marginBottom: 24, color: "var(--white-64)" }}>{event.description}</p>
 
                   {/* Date and Time */}
                   <div className="upcoming-event-meta-row">

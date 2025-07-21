@@ -75,7 +75,7 @@ const StepCard = ({ step, index, isHovered, onHover, onLeave }) => {
       </div>
 
       <div className="how-card-content">
-        <h3 className="how-card-title">
+        <h3 className="how-card-title h4 gradient-text-primary">
           {step.title}
         </h3>
         <p className="how-card-description">

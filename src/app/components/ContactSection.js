@@ -194,7 +194,7 @@ export default function ContactSection() {
               {/* Form Fields */}
               <div className="contact-form-section">
                 <div className="contact-field-floating">
-                  <label className="subhead contact-label-modern">
+                  <label className="caption-1 contact-label-modern">
                     <User className="contact-label-icon" />
                     Full Name
                   </label>
@@ -211,7 +211,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="contact-field-floating">
-                  <label className="subhead contact-label-modern">
+                  <label className="caption-1 contact-label-modern">
                     <Mail className="contact-label-icon" />
                     Email Address
                   </label>
@@ -228,7 +228,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="contact-field-floating">
-                  <label className="subhead contact-label-modern">
+                  <label className="caption-1 contact-label-modern">
                     <MessageSquare className="contact-label-icon" />
                     Your Message
                   </label>

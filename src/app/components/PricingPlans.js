@@ -173,7 +173,7 @@ const StandardCard = ({ plan, index, hoveredIndex, setHoveredIndex, handleGetSta
   // Traveling gradient animation
   useEffect(() => {
     const animate = () => {
-      setGradientAngle(prev => (prev + 1) % 360);
+      setGradientAngle(prev => (prev + 0.2) % 360);
       animationRef.current = requestAnimationFrame(animate);
     };
     animationRef.current = requestAnimationFrame(animate);

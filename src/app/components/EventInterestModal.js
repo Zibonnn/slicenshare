@@ -153,7 +153,7 @@ export default function EventInterestModal({ isOpen, onClose, eventTitle, eventI
                   {/* Form Fields */}
                   <div className="contact-form-section">
                     <div className="contact-field-floating">
-                      <label className="subhead contact-label-modern">
+                      <label className="caption-1 contact-label-modern">
                         <User className="contact-label-icon" />
                         Full Name
                       </label>
@@ -170,7 +170,7 @@ export default function EventInterestModal({ isOpen, onClose, eventTitle, eventI
                     </div>
 
                     <div className="contact-field-floating">
-                      <label className="subhead contact-label-modern">
+                      <label className="caption-1 contact-label-modern">
                         <Mail className="contact-label-icon" />
                         Email Address
                       </label>
@@ -187,7 +187,7 @@ export default function EventInterestModal({ isOpen, onClose, eventTitle, eventI
                     </div>
 
                     <div className="contact-field-floating">
-                      <label className="subhead contact-label-modern">
+                      <label className="caption-1 contact-label-modern">
                         <Phone className="contact-label-icon" />
                         Phone Number
                       </label>

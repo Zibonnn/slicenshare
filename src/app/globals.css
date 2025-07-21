@@ -469,8 +469,6 @@ h1, h2, h3, h4, h5 {
 .how-card-title {
   text-align: center;
   color: var(--white);
-  font-size: 1.25rem;
-  font-weight: 600;
   margin: 0;
 }
 
@@ -1339,8 +1337,8 @@ h1, h2, h3, h4, h5 {
   gap: 8px;
 }
 .upcoming-event-meta-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 
