@@ -411,6 +411,18 @@ const StreamerCard = ({ streamer, index }) => {
           <h3 className="player-name-gradient h4-alt">
             {streamer.displayName}
           </h3>
+          
+          {/* Verified Gamer */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", width: "100%" }}>
+            <span className="caption-1">Verified</span>
+            <img 
+              src="/Logo/Logo.png"
+              alt="SNS Logo"
+              style={{ width: "16px", height: "16px" }}
+            />
+            <span className="caption-1">Gamer</span>
+          </div>
+          
           <div className="rising-star-socials">
             {streamer.socials?.slice(0, 3).map((social, socialIndex) => (
               <SocialIcon key={socialIndex} social={social} />
@@ -434,7 +446,7 @@ const StreamerCard = ({ streamer, index }) => {
             </div>
           </div>
           
-          {/* Status */}
+          {/* Status - Commented out for future use
           <div className="rising-star-detail-item">
             <img 
               src="/icons/Medal.png"
@@ -448,6 +460,7 @@ const StreamerCard = ({ streamer, index }) => {
               </span>
             </div>
           </div>
+          */}
         </div>
       </div>
     </motion.div>

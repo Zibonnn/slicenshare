@@ -3,38 +3,39 @@
 "use client"
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { User, Mail, MessageSquare, Send, CheckCircle, AlertCircle } from "lucide-react"
 
 const floatingIcons = [
   {
     icon: "/Contact/1x/Chat.png",
     x: 58,
     y: 30,
-    size: "w-8 h-8 sm:w-10 sm:h-10",
+    size: "contact-icon-small",
   },
   {
     icon: "/Contact/1x/Arrow.png",
     x: 44,
     y: 53,
-    size: "w-8 h-8 sm:w-10 sm:h-10",
+    size: "contact-icon-small",
     rotate: -45,
   },
   {
     icon: "/Contact/1x/Main.png",
     x: 45,
     y: 40,
-    size: "w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56",
+    size: "contact-icon-large",
   },
   {
     icon: "/Contact/1x/Check.png",
     x: 75,
     y: 65,
-    size: "w-8 h-8 sm:w-10 sm:h-10",
+    size: "contact-icon-small",
   },
   {
     icon: "/Contact/1x/Doc.png",
     x: 56,
     y: 83,
-    size: "w-8 h-8 sm:w-10 sm:h-10",
+    size: "contact-icon-small",
   },
 ]
 
@@ -47,6 +48,7 @@ export default function ContactSection() {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [success, setSuccess] = useState(false)
 
   const handleInputChange = (e) => {
     setFormData({
@@ -80,8 +82,9 @@ export default function ContactSection() {
         message: "",
       })
 
-      // Show success message (you can add a success state if needed)
-      alert("Message sent successfully! We'll get back to you soon.")
+      // Show success message
+      setSuccess(true)
+      setTimeout(() => setSuccess(false), 5000)
     } catch (err) {
       setError(err.message)
     } finally {
@@ -90,37 +93,28 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 sm:py-32 lg:py-40 bg-black relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="contact-section">
+      <div className="contact-container">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="contact-header"
         >
-          <h3
-            className="font-bold text-base sm:text-lg tracking-wider"
-            style={{
-              backgroundImage:
-                "linear-gradient(300deg, var(--token-dc9856fd-0400-432f-8bac-dca82295da25, rgb(255, 0, 64)) 0%, rgb(255, 145, 173) 19.91370160204264%, rgb(182, 214, 241) 36.19087837837838%, rgb(254, 221, 194) 52.43997912726201%, rgb(255, 195, 161) 65.35754504504504%, rgb(252, 161, 43) 82.6090811186774%, var(--token-8a3f945e-7097-47e8-ae48-c03cf8e5cf8b, rgb(129, 23, 241)) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <h2 className="h4-alt mb-2">STAY IN THE LOOP</h2>
+          <p className="callout gradient-text-primary">
             Contact Us
-          </h3>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">STAY IN THE LOOP</h2>
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center max-w-7xl mx-auto">
+        <div className="contact-grid">
           {/* Left Side - Animated Icons (Hidden on mobile, shown on lg+) */}
-          <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] hidden lg:block">
+          <div className="contact-icons-container">
             {/* Floating Icons */}
             {floatingIcons.map((item, index) => (
               <motion.div
                 key={index}
-                className="absolute"
+                className="contact-floating-icon"
                 style={{
                   left: `${item.x}%`,
                   top: `${item.y}%`,
@@ -148,85 +142,134 @@ export default function ContactSection() {
                   src={item.icon || "/placeholder.svg"}
                   alt={`Contact icon ${index + 1}`}
                   className={`${item.size} object-contain`}
-                  style={{
-                    filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.3))",
-                  }}
                 />
               </motion.div>
             ))}
           </div>
 
-          {/* Right Side - Contact Form */}
+          {/* Right Side - Enhanced Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-md mx-auto lg:mx-0 bg-[#0D0D0D] p-6 sm:p-8 lg:p-10 rounded-2xl"
+            className="contact-form-container"
           >
-            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-              {error && (
-                <div className="bg-red-500/10 border border-red-500 rounded-lg p-4 mb-6">
-                  <p className="text-red-400 text-sm">{error}</p>
-                </div>
-              )}
-              <div>
-                <label className="block text-white text-sm font-medium mb-2 ml-4 sm:ml-6">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Jane Smith"
-                  className="w-full px-4 py-3 sm:py-4 bg-[#171717] rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all backdrop-blur-sm text-sm sm:text-base"
-                  required
-                />
-              </div>
+            {/* Form Header */}
+            <div className="contact-form-header">
+              <h4 className="h4-alt text-center">Get In Touch</h4>
+              <p className="body-s text-center">
+                Ready to join the next generation of esports? Let's talk.
+              </p>
+            </div>
 
-              <div>
-                <label className="block text-white text-sm font-medium mb-2 ml-4 sm:ml-6">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="jane@framer.com"
-                  className="w-full px-4 py-3 sm:py-4 bg-[#171717] rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all backdrop-blur-sm text-sm sm:text-base"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-white text-sm font-medium mb-2 ml-4 sm:ml-6">Your Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={4}
-                  placeholder="Write your message..."
-                  className="w-full px-4 py-3 sm:py-4 bg-[#171717] rounded-3xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none backdrop-blur-sm text-sm sm:text-base"
-                  required
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold py-3 sm:py-4 px-6 rounded-full hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
-                whileHover={{
-                  scale: loading ? 1 : 1.02,
-                  boxShadow: loading ? "none" : "0 10px 30px rgba(139, 92, 246, 0.4)",
-                }}
-                whileTap={{ scale: loading ? 1 : 0.98 }}
-              >
-                {loading ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    <span>Sending...</span>
+            <form onSubmit={handleSubmit} className="contact-form">
+              {/* Success Message */}
+              {success && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="contact-success"
+                >
+                  <div className="contact-success-text">
+                    <CheckCircle className="contact-error-icon" />
+                    <span className="caption-1">Message sent successfully! We'll get back to you soon.</span>
                   </div>
-                ) : (
-                  "Submit"
-                )}
-              </motion.button>
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="contact-error-modern"
+                >
+                  <div className="contact-error-text-modern">
+                    <AlertCircle className="contact-error-icon" />
+                    <span className="caption-1">{error}</span>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Form Fields */}
+              <div className="contact-form-section">
+                <div className="contact-field-floating">
+                  <label className="subhead contact-label-modern">
+                    <User className="contact-label-icon" />
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Enter your full name"
+                    className="contact-input-modern"
+                    required
+                    disabled={loading}
+                  />
+                </div>
+
+                <div className="contact-field-floating">
+                  <label className="subhead contact-label-modern">
+                    <Mail className="contact-label-icon" />
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Enter your email address"
+                    className="contact-input-modern"
+                    required
+                    disabled={loading}
+                  />
+                </div>
+
+                <div className="contact-field-floating">
+                  <label className="subhead contact-label-modern">
+                    <MessageSquare className="contact-label-icon" />
+                    Your Message
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    placeholder="Tell us about your gaming journey, goals, or any questions you have..."
+                    className="contact-textarea-modern"
+                    required
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+
+              {/* CTA Section */}
+              <div className="contact-cta-section">
+                <motion.button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-primary"
+                  whileHover={{
+                    scale: loading ? 1 : 1.02,
+                  }}
+                  whileTap={{ scale: loading ? 1 : 0.98 }}
+                  style={{ gap: "0.5rem" }}
+                >
+                  {loading ? (
+                    <>
+                      <div className="loading-spinner"></div>
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </motion.button>
+              </div>
             </form>
           </motion.div>
         </div>
