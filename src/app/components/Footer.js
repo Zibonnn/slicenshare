@@ -34,7 +34,7 @@ export default function Footer() {
             <div className="space-y-3 sm:space-y-4">
               <motion.a
                 href="#"
-                className="flex items-center justify-center space-x-3 subhead hover:text-gray-300 transition-colors group"
+                className="flex items-left justify-left space-x-3 subhead hover:text-gray-300 transition-colors group"
                 whileHover={{ x: 5 }}
               >
                 <svg className="w-4 h-4" style={{width: '16px', height: '16px'}} fill="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@ export default function Footer() {
 
               <motion.a
                 href="#"
-                className="flex items-center justify-center space-x-3 subhead hover:text-gray-300 transition-colors group"
+                className="flex items-left justify-left space-x-3 subhead hover:text-gray-300 transition-colors group"
                 whileHover={{ x: 5 }}
               >
                 <svg className="w-4 h-4" style={{width: '16px', height: '16px'}} fill="currentColor" viewBox="0 0 24 24">
@@ -125,7 +125,7 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center border-t border-gray-800 pt-8"
+          className="text-center border-t border-gray-800 pt-8 flex flex-col items-center"
         >
           <p className="caption-1">Copyright © 2025. All Rights Reserved by Slice N Share.</p>
         </motion.div>
