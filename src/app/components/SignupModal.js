@@ -186,7 +186,7 @@ export default function SignupModal({ isOpen, onClose, selectedPlan }) {
                     <Check size={24} className="text-white" />
                   </div>
                   <h3 className="h3 text-white" style={{ marginBottom: 12 }}>Welcome to Slice N Share!</h3>
-                  <p className="body-s text-white-56">Your registration was successful. We'll be in touch soon!</p>
+                  <p className="body-s text-white-56">Your registration was successful. We wll be in touch soon!</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="signup-modal-form">
@@ -402,7 +402,7 @@ export default function SignupModal({ isOpen, onClose, selectedPlan }) {
                               <Zap size={16} className="signup-modal-cta-icon" />
                               <h4 className="caption-1" style={{ fontWeight: 500, color: '#fff' }}>Ready to Start Your Journey?</h4>
                             </div>
-                            <p className="caption-1 text-white-56">Join 500+ streamers who&#39;ve already transformed their gaming career with Slice N Share!</p>
+                            <p className="caption-1 text-white-56">Join 500+ streamers who have already transformed their gaming career with Slice N Share!</p>
                           </div>
                         </motion.div>
                       )}
