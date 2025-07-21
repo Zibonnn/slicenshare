@@ -1204,6 +1204,9 @@ h1, h2, h3, h4, h5 {
 .upcoming-events-section {
   padding: 10rem 0;
   background: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .upcoming-events-header {
   text-align: center;
@@ -1637,4 +1640,10 @@ h1, h2, h3, h4, h5 {
   width: 20px;
   height: 20px;
   margin-left: 4px;
+}
+
+.upcoming-events-grid-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
