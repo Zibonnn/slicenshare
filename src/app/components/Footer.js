@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 export default function Footer() {
   return (
-    <footer className="py-20 sm:py-32 lg:py-40 bg-[#0D0D0D]">
+    <footer className="footer-root py-20 sm:py-32 lg:py-40 bg-[#0D0D0D]">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-16 max-w-6xl mx-auto items-start">
@@ -12,7 +12,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center md:justify-start"
+            className="flex items-center justify-center"
           >
             <div className="flex items-center space-x-1">
               <img 
@@ -28,13 +28,13 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center md:text-left"
+            className="text-center"
           >
             <h3 className="h3 mb-4 sm:mb-6 gradient-text-primary">SOCIAL LINKS</h3>
             <div className="space-y-3 sm:space-y-4">
               <motion.a
                 href="#"
-                className="flex items-center justify-center md:justify-start space-x-3 subhead hover:text-gray-300 transition-colors group"
+                className="flex items-center justify-center space-x-3 subhead hover:text-gray-300 transition-colors group"
                 whileHover={{ x: 5 }}
               >
                 <svg className="w-4 h-4" style={{width: '16px', height: '16px'}} fill="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@ export default function Footer() {
 
               <motion.a
                 href="#"
-                className="flex items-center justify-center md:justify-start space-x-3 subhead hover:text-gray-300 transition-colors group"
+                className="flex items-center justify-center space-x-3 subhead hover:text-gray-300 transition-colors group"
                 whileHover={{ x: 5 }}
               >
                 <svg className="w-4 h-4" style={{width: '16px', height: '16px'}} fill="currentColor" viewBox="0 0 24 24">
@@ -77,7 +77,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center md:text-left"
+            className="text-center"
           >
             <h3 className="h3 mb-4 sm:mb-6 gradient-text-primary">WEBSITE</h3>
             <div className="space-y-3">
