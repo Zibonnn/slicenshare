@@ -48,92 +48,94 @@ export default function UpcomingEvents() {
   }
 
   return (
-    <section id="events" className="py-40 bg-[#0D0D0D]">
-      <div className="container mx-auto px-4">
+    <section id="events" className="upcoming-events-section">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="upcoming-events-header"
         >
-          <h2 className="h4-alt mb-4">
+          <h2 className="h4-alt" style={{ marginBottom: 24 }}>
             UPCOMING EVENTS
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="upcoming-events-grid">
           {events.map((event, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-[#1a1a1a] rounded-2xl overflow-hidden"
+              className="upcoming-event-card"
               whileHover={{ scale: 1.02 }}
             >
               {/* Event Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="upcoming-event-image-container">
                 <img
                   src={event.image || "/placeholder.svg"}
                   alt={event.title}
-                  className="w-full h-full object-cover"
+                  className="upcoming-event-image"
                   crossOrigin="anonymous"
                 />
               </div>
 
               {/* Event Content */}
-              <div className="p-6 space-y-4">
+              <div className="upcoming-event-content">
                 {/* Event Title with Gradient */}
-                <h3
-                  className="text-xl font-bold mb-3 gradient-text-primary-no-center"
-                >
-                  {event.title}
-                </h3>
+                <h3 className="h4 gradient-text-primary-no-center" style={{ marginBottom: 12 }}>{event.title}</h3>
 
                 {/* Event Description */}
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">{event.description}</p>
+                <p className="body" style={{ marginBottom: 24 }}>{event.description}</p>
 
                 {/* Date and Time */}
-                <div className="flex items-center space-x-2 text-sm text-gray-300 mb-3">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>{event.date}</span>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>{event.time}</span>
+                <div className="upcoming-event-meta-row">
+                  <div className="upcoming-event-meta-item">
+                    <svg className="upcoming-event-meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="caption-1">{event.date}</span>
+                  </div>
+                  <div className="upcoming-event-meta-item">
+                    <svg className="upcoming-event-meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="caption-1">{event.time}</span>
+                  </div>
                 </div>
 
                 {/* Location */}
-                <div className="flex items-center space-x-2 text-sm text-gray-300 mb-6">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>{event.location}</span>
+                <div className="upcoming-event-meta-row" style={{ marginBottom: 24 }}>
+                  <div className="upcoming-event-meta-item">
+                    <svg className="upcoming-event-meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="caption-1">{event.location}</span>
+                  </div>
                 </div>
 
                 {/* Interested Button */}
                 <motion.button
                   onClick={() => handleEventInterest(event)}
-                  className="w-full bg-[#2a2a2a] hover:bg-[#3a3a3a] text-gray-300 font-medium py-3 px-6 rounded-full transition-all flex items-center justify-center space-x-2"
+                  className="btn-secondary upcoming-event-btn"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>Interested</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="subhead">Interested</span>
+                  <svg className="upcoming-event-btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </motion.button>
