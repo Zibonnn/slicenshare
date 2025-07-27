@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-duplicate-props */
 "use client"
 import { motion } from "framer-motion"
 import { useState } from "react"
@@ -158,7 +157,7 @@ export default function ContactSection() {
             <div className="contact-form-header">
               <h4 className="h4-alt text-center">Get In Touch</h4>
               <p className="body-s text-center">
-                Ready to join the next generation of esports? Let's talk.
+                Ready to join the next generation of esports? Let&apos;s talk.
               </p>
             </div>
 
@@ -172,7 +171,7 @@ export default function ContactSection() {
                 >
                   <div className="contact-success-text">
                     <CheckCircle className="contact-error-icon" />
-                    <span className="caption-1">Message sent successfully! We'll get back to you soon.</span>
+                    <span className="caption-1">Message sent successfully! We&apos;ll get back to you soon.</span>
                   </div>
                 </motion.div>
               )}
